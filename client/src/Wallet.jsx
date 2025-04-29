@@ -1,6 +1,8 @@
 import server from "./server";
 
-function Wallet({ address, setAddress, balance, setBalance }) {
+function Wallet({ address, setAddress, balance, setBalance, setPrivateKeyHex }) {
+
+  //Fetch address balance from the server
   async function onChange(evt) {
     const address = evt.target.value;
     setAddress(address);
@@ -17,6 +19,11 @@ function Wallet({ address, setAddress, balance, setBalance }) {
   return (
     <div className="container wallet">
       <h1>Your Wallet</h1>
+
+      <label>
+        PrivateKey
+        <input placeholder="Your Private Key" onChange={(e) => setPrivateKeyHex(e.target.value)} type="password"></input>
+      </label>
 
       <label>
         Wallet Address
